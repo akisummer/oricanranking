@@ -38,7 +38,7 @@ class oricon():
           if locals()['result'+ str(i)][c][2] != locals()['result1' + str(i)][c][1]:
             temp = ( locals()['result1'+ str(i)][c][0], 'nan', locals()['result1' + str(i)][c][1], locals()['result1'+ str(i)][c][2], locals()['result1'+str(i)][c][3], locals()['result1'+str(i)][c][4]) #stupid but simple,lol
             locals()['result'+ str(i)].insert(c, temp)
-            list1.append(locals()['result'+str(i)])
+        list1.append(locals()['result'+str(i)])
 
     s2 = pd.DataFrame(list1[0], index = ranks(2), columns=["state", "href", "title", "name", "selldata", "num"])
     s3 = pd.DataFrame(list1[1], index = ranks(3), columns=["state", "href", "title", "name", "selldata", "num"])
