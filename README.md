@@ -2,4 +2,4 @@ Since oricon.co.jp only publishes monthly ranking for the lastest year, the auto
 
 Some data contain waste information suck as 'span' will be handled soon.
 
-The spider for yearly ranking are in processing.
+
