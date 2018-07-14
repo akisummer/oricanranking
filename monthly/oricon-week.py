@@ -7,12 +7,6 @@ import requests
 class oricon():
 
 
-# def __init__(self, data1, data2):
-#      self.data1 = data1
-#      self.data2 = data2
-
-
-
   def monthrank(month):   
 
     ranks = lambda n: np.linspace(n*10-9, n*10, 10, dtype= int)
@@ -22,8 +16,8 @@ class oricon():
 
     req1 = requests.get(url_loc)
     result1 = re.findall('<p class="status (.*?)">.*?<a href="(.*?)".*?itemprop="name">(.*?)</h2>\s*<p class="name">(.*?)</p>.*?<li>発売日：\s*(.*?)\s*</li>\s*<li>推定売上枚数：(.*?)</li>', req1.text, re.S)
-    ranks1 = np.linspace(1, 10, 10, dtype= int)
-    s1 = pd.DataFrame(result1, index=ranks1, columns= ["state", "href", "title", "name", "selldata", "num"])
+#    ranks1 = np.linspace(1, 10, 10, dtype= int)
+    s1 = pd.DataFrame(result1, index=ranks(1), columns= ["state", "href", "title", "name", "selldata", "num"])
 
     for i in range(2,6):
       locals()['req'+ str(i)] = requests.get(url_loc + 'p/'+ str(i) + '/')
@@ -90,7 +84,7 @@ class oricon():
 #    print(locals()['s' + str(i)])    
 #      locals()['s'+ str(i)].to_excel("test.csv",index=False,sep=',')
   monthrank = pd.merge(s, ss.drop(["selldata"], axis=1), left_index=True, right_index=True)  #delete the repeat data
-  monthrank.to_excel("2018-06.xls", index=False, sep=',') #output to the file, do no forget change the name.
+#  monthrank.to_excel("2018-06.xls", index=False, sep=',') #output to the file, do no forget change the name.
   print(monthrank) 
 
 
